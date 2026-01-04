@@ -16,3 +16,8 @@ async fn main() {
     println!("The server is running http://localhost:3000");
     axum::serve(listener, app).await.unwrap();
 }
+
+async fn hello_handler(Form(person): Form<Person>) -> String {
+    println!(" We got data from the form {}", person);
+    format!(" Hello {} , Your age is {}", person.name, person.age)
+}
